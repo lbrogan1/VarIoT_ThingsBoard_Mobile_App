@@ -130,6 +130,16 @@ class S {
     );
   }
 
+    /// `Internal Sensors`
+  String get internalSensors {
+    return Intl.message(
+      'Internal Sensors',
+      name: 'internalSensors',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Log Out`
   String get logout {
     return Intl.message(

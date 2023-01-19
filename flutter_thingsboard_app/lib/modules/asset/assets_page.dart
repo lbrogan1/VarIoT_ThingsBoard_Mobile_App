@@ -9,7 +9,8 @@ import 'assets_list.dart';
 class AssetsPage extends TbPageWidget {
   final bool searchMode;
 
-  AssetsPage(TbContext tbContext, {this.searchMode = false}) : super(tbContext);
+  AssetsPage(TbContext tbContext, {this.searchMode = false}) 
+    : super(tbContext);
 
   @override
   _AssetsPageState createState() => _AssetsPageState();
