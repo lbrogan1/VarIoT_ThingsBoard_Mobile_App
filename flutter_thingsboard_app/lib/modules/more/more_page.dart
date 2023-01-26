@@ -184,9 +184,13 @@ class MoreMenuItem {
                 icon: Icons.track_changes,
                 path: '/auditLogs'),
             MoreMenuItem(
-              title: '${S.of(context).internalSensors}', 
-              icon: Icons.domain, 
-              path:'/internalSensors'),
+                title: '${S.of(context).internalSensors}',
+                icon: Icons.domain,
+                path: '/internalSensors'),
+            MoreMenuItem(
+                title: '${S.of(context).dashboards}',
+                icon: Icons.track_changes,
+                path: '/dashboards'),
           ]);
           break;
         case Authority.CUSTOMER_USER:

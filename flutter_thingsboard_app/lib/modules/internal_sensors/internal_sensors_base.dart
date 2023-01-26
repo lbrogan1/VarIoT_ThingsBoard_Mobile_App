@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:thingsboard_app/core/entity/entities_base.dart';
 import 'package:thingsboard_client/thingsboard_client.dart';
 
-mixin InternalSensorsBase  on EntitiesBase<AssetInfo, PageLink> {
+mixin InternalSensorsBase on EntitiesBase<AssetInfo, PageLink> {
   @override
   String get title => 'Internal Phone Sensors';
 
   @override
-  String get noItemsFoundText => 'No assets found';
+  String get noItemsFoundText => 'No sensors found';
 
   @override
   Future<PageData<AssetInfo>> fetchEntities(PageLink pageLink) {
@@ -27,7 +27,7 @@ mixin InternalSensorsBase  on EntitiesBase<AssetInfo, PageLink> {
 
   @override
   Widget buildEntityListCard(BuildContext context, AssetInfo asset) {
-    return _buildCard(context, asset); 
+    return _buildCard(context, asset);
   }
 
   @override
@@ -42,13 +42,11 @@ mixin InternalSensorsBase  on EntitiesBase<AssetInfo, PageLink> {
 
   Widget _buildCard(context, AssetInfo asset) {
     var name;
-    if(asset.name == "One Drexel Plaza") {
+    if (asset.name == "One Drexel Plaza") {
       name = "Acceleromter";
-    }
-    else if(asset.name == "DWSL Lab") {
+    } else if (asset.name == "DWSL Lab") {
       name = "Gyroscope";
-    }
-    else {
+    } else {
       name = "Magnetometer";
     }
 

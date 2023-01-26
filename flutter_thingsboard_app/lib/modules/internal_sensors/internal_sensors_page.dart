@@ -21,7 +21,7 @@ import 'package:thingsboard_client/thingsboard_client.dart';
 class InternalSensorsPage extends TbPageWidget {
   final bool searchMode;
 
-  InternalSensorsPage(TbContext tbContext, {this.searchMode = false}) 
+  InternalSensorsPage(TbContext tbContext, {this.searchMode = false})
       : super(tbContext);
 
   @override
@@ -42,6 +42,107 @@ class _InternalSensorsPageState extends TbPageState<InternalSensorsPage> {
     var assetsList = InternalSensorsList(tbContext, _pageLinkController,
         searchMode: widget.searchMode);
     PreferredSizeWidget appBar;
+    appBar = TbAppBar(tbContext, title: Text(assetsList.title), actions: [
+      IconButton(
+        icon: Icon(Icons.search),
+        onPressed: () {
+          navigateTo('/assets?search=true');
+        },
+      )
+    ]);
+    return Scaffold(
+        appBar: appBar,
+        body: Row(mainAxisSize: MainAxisSize.max, children: [
+          Flexible(
+              fit: FlexFit.tight,
+              child: Container(
+                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 0),
+                child: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    SizedBox(width: 16),
+                    Flexible(
+                        fit: FlexFit.tight,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                TextButton(
+                                  onPressed: () {
+                                    _accelPage();
+                                  },
+                                  child: Text(
+                                    'Accelerometer',
+                                    style: TextStyle(
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .primary,
+                                        letterSpacing: 1,
+                                        fontSize: 35,
+                                        height: 16 / 12),
+                                  ),
+                                )
+                              ],
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                TextButton(
+                                  onPressed: () {
+                                    _gyroPage();
+                                  },
+                                  child: Text(
+                                    'Gyroscope',
+                                    style: TextStyle(
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .primary,
+                                        letterSpacing: 1,
+                                        fontSize: 35,
+                                        height: 16 / 12),
+                                  ),
+                                )
+                              ],
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                TextButton(
+                                  onPressed: () {
+                                    _magPage();
+                                  },
+                                  child: Text(
+                                    'Magnetometer',
+                                    style: TextStyle(
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .primary,
+                                        letterSpacing: 1,
+                                        fontSize: 35,
+                                        height: 16 / 12),
+                                  ),
+                                )
+                              ],
+                            ),
+                            SizedBox(height: 4),
+                          ],
+                        )),
+                    SizedBox(width: 16),
+                    Icon(Icons.chevron_right, color: Color(0xFFACACAC)),
+                    SizedBox(width: 16)
+                  ],
+                ),
+              ))
+        ]));
+  }
+
+  /* @override
+  Widget build(BuildContext context) {
+    var assetsList = InternalSensorsList(tbContext, _pageLinkController,
+        searchMode: widget.searchMode);
+    PreferredSizeWidget appBar;
     if (widget.searchMode) {
       appBar = TbAppSearchBar(
         tbContext,
@@ -58,6 +159,17 @@ class _InternalSensorsPageState extends TbPageState<InternalSensorsPage> {
       ]);
     }
     return Scaffold(appBar: appBar, body: assetsList);
+  } */
+
+  void _accelPage() async {
+    navigateTo('/internalSensors/accel');
   }
 
+  void _gyroPage() async {
+    navigateTo('/internalSensors/gyro');
+  }
+
+  void _magPage() async {
+    navigateTo('/internalSensors/mag');
+  }
 }

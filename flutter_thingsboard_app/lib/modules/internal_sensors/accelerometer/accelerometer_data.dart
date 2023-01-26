@@ -1,19 +1,19 @@
-import 'dart:_foreign_helper';
-import 'dart:html';
-
 import 'package:sensors_plus/sensors_plus.dart';
 
-AccelerometerEvent getAccelData() {
-  accelerometerEvents.listen(AccelerometerEvent event);
-  return event;
-}
+double x = 0;
+double y = 0;
+double z = 0;
 
-void initState() {
+String getAccelData() {
   accelerometerEvents.listen(
     (AccelerometerEvent event) {
-      var x = event.x;
-      var y = event.y;
-      var z = event.z;
+      x = event.x;
+      y = event.y;
+      z = event.z;
     },
-  ),
-};
+  );
+  String xS = x.toString();
+  String yS = y.toString();
+  String zS = z.toString();
+  return xS + "," + yS + "," + zS;
+}
