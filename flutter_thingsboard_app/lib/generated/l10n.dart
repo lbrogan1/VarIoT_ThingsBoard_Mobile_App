@@ -150,6 +150,16 @@ class S {
     );
   }
 
+  /// `Device Profiles`
+  String get deviceProfiles {
+    return Intl.message(
+      'deviceProfiles',
+      name: 'deviceProfiles',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Log Out`
   String get logout {
     return Intl.message(

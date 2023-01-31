@@ -48,6 +48,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   sensors_plus: ^2.0.1
+  requests: ^4.7.0
 
 dev_dependencies:
   flutter_test:

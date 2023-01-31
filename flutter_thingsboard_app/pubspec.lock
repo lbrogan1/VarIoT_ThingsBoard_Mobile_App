@@ -359,6 +359,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.1.1"
+  hex:
+    dependency: transitive
+    description:
+      name: hex
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.2.0"
   html:
     dependency: transitive
     description:
@@ -562,6 +569,20 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.1"
+  quiver:
+    dependency: transitive
+    description:
+      name: quiver
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "3.2.1"
+  requests:
+    dependency: "direct main"
+    description:
+      name: requests
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "4.7.0"
   sensors_plus:
     dependency: "direct main"
     description:
