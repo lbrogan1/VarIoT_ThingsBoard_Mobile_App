@@ -33,3 +33,11 @@ void sendTelemetry(String xData, String yData, String zData) async {
   //dynamic json = r.json;
   //print(json!['id']);
 }
+
+getHomeDashboardInfo() async {
+  String URLendpoint = 'http://variot.ece.drexel.edu';
+  String apiCall = "/api/dashboard/home";
+  String URL = URLendpoint + apiCall;
+  var r = await Requests.get(URL);
+  return r;
+}

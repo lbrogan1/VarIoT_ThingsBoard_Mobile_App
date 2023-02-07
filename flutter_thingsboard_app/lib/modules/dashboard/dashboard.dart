@@ -276,7 +276,7 @@ class _DashboardState extends TbContextState<Dashboard> {
               } else {
                 return Stack(children: [
                   UniversalPlatform.isWeb
-                      ? Center(child: Text('Not implemented!'))
+                      ? Center(child: Text('Not implemented Yet!'))
                       : InAppWebView(
                           key: webViewKey,
                           initialUrlRequest: URLRequest(url: _initialUrl),
@@ -403,7 +403,8 @@ class _DashboardState extends TbContextState<Dashboard> {
                                 action: PermissionRequestResponseAction.GRANT);
                           },
                         ),
-                  if (!UniversalPlatform.isWeb)
+                  if (!UniversalPlatform
+                      .isWeb) //This just shows the progress indicator
                     TwoValueListenableBuilder(
                         firstValueListenable: dashboardLoading,
                         secondValueListenable: dashboardActive,

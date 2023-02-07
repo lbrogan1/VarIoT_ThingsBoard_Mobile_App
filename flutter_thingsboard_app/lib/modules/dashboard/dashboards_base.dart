@@ -33,6 +33,8 @@ mixin DashboardsBase on EntitiesBase<DashboardInfo, PageLink> {
     navigateToDashboard(dashboard.id!.id!, dashboardTitle: dashboard.title);
     // navigateTo('/fullscreenDashboard/${dashboard.id!.id}?title=${dashboard.title}');
     // navigateTo('/dashboard/${dashboard.id!.id}?title=${dashboard.title}');
+    //One below wasn't here before
+    //navigateTo('/dashboard/${dashboard.id!.id}');
   }
 
   @override
