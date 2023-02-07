@@ -28,8 +28,8 @@ class ThingsboardAppRouter {
         handlerFunc: (BuildContext? context, Map<String, List<String>> params) {
       var settings = context!.settings;
       return Scaffold(
-        appBar: AppBar(title: Text('Not Found')),
-        body: Center(child: Text('Route not defined: ${settings!.name}')),
+        appBar: AppBar(title: null),//Text('Not Found')),
+        body: Center(child: null),//Text('Route not defined: ${settings!.name}')),
       );
     });
     InitRoutes(_tbContext).registerRoutes();
