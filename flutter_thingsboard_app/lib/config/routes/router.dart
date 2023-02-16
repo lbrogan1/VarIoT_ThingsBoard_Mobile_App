@@ -17,6 +17,7 @@ import 'package:thingsboard_app/utils/ui_utils_routes.dart';
 import 'package:thingsboard_app/modules/internal_sensors/accel_routes.dart';
 import 'package:thingsboard_app/modules/internal_sensors/gyroscope/gyro_routes.dart';
 import 'package:thingsboard_app/modules/internal_sensors/magnetometer/mag_routes.dart';
+import 'package:thingsboard_app/modules/internal_sensors/camera/camera_routes.dart';
 import 'package:universal_html/html.dart';
 
 class ThingsboardAppRouter {
@@ -28,8 +29,9 @@ class ThingsboardAppRouter {
         handlerFunc: (BuildContext? context, Map<String, List<String>> params) {
       var settings = context!.settings;
       return Scaffold(
-        appBar: AppBar(title: null),//Text('Not Found')),
-        body: Center(child: null),//Text('Route not defined: ${settings!.name}')),
+        appBar: AppBar(title: null), //Text('Not Found')),
+        body: Center(
+            child: null), //Text('Route not defined: ${settings!.name}')),
       );
     });
     InitRoutes(_tbContext).registerRoutes();
@@ -46,6 +48,7 @@ class ThingsboardAppRouter {
     AccelerometerRoutes(_tbContext).registerRoutes();
     GyroscopeRoutes(_tbContext).registerRoutes();
     MagnetometerRoutes(_tbContext).registerRoutes();
+    CameraRoutes(_tbContext).registerRoutes();
     CustomerRoutes(_tbContext).registerRoutes();
     TenantRoutes(_tbContext).registerRoutes();
   }

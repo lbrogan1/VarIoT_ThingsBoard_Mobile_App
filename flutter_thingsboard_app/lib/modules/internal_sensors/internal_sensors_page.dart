@@ -126,6 +126,26 @@ class _InternalSensorsPageState extends TbPageState<InternalSensorsPage> {
                                 )
                               ],
                             ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                TextButton(
+                                  onPressed: () {
+                                    _cameraPage();
+                                  },
+                                  child: Text(
+                                    'Camera',
+                                    style: TextStyle(
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .primary,
+                                        letterSpacing: 1,
+                                        fontSize: 35,
+                                        height: 16 / 12),
+                                  ),
+                                )
+                              ],
+                            ),
                             SizedBox(height: 4),
                           ],
                         )),
@@ -171,5 +191,9 @@ class _InternalSensorsPageState extends TbPageState<InternalSensorsPage> {
 
   void _magPage() async {
     navigateTo('/internalSensors/mag');
+  }
+
+  void _cameraPage() async {
+    navigateTo('/internalSensors/camera');
   }
 }
