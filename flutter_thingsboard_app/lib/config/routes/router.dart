@@ -14,7 +14,7 @@ import 'package:thingsboard_app/modules/home/home_routes.dart';
 import 'package:thingsboard_app/modules/profile/profile_routes.dart';
 import 'package:thingsboard_app/modules/tenant/tenant_routes.dart';
 import 'package:thingsboard_app/utils/ui_utils_routes.dart';
-import 'package:thingsboard_app/modules/internal_sensors/accel_routes.dart';
+import 'package:thingsboard_app/modules/internal_sensors/accelerometer/accel_routes.dart';
 import 'package:thingsboard_app/modules/internal_sensors/gyroscope/gyro_routes.dart';
 import 'package:thingsboard_app/modules/internal_sensors/magnetometer/mag_routes.dart';
 import 'package:thingsboard_app/modules/internal_sensors/camera/camera_routes.dart';

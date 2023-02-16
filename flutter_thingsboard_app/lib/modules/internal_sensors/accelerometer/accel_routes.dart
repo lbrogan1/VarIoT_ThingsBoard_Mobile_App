@@ -4,7 +4,7 @@ import 'package:thingsboard_app/config/routes/router.dart';
 import 'package:thingsboard_app/core/context/tb_context.dart';
 import 'package:thingsboard_app/modules/audit_log/audit_logs_page.dart';
 import 'package:thingsboard_app/modules/internal_sensors/internal_sensors_page.dart';
-import 'package:thingsboard_app/modules/internal_sensors/accel_page.dart';
+import 'package:thingsboard_app/modules/internal_sensors/accelerometer/accel_page.dart';
 import 'package:universal_html/html.dart';
 
 class AccelerometerRoutes extends TbRoutes {
