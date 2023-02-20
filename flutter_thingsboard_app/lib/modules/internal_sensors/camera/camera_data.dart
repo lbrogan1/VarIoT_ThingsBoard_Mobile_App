@@ -8,7 +8,5 @@ void sendTelemetry(XFile F) async {
   String APItoken = 'FCrxDyxMljJ6nOUxAD11';
   String URL = URLendpoint + '/api/v1/' + APItoken + '/telemetry';
   var r = await Requests.post(URL,
-      json: accelData,
-      verify: false,
-      headers: {"Content-Type": "application/json"});
+      json: accelData, verify: false, headers: {"Content-Type": "image/jpeg"});
 }

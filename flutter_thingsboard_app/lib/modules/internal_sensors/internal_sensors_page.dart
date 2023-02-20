@@ -166,6 +166,26 @@ class _InternalSensorsPageState extends TbPageState<InternalSensorsPage> {
                                 )
                               ],
                             ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                TextButton(
+                                  onPressed: () {
+                                    _biometricPage();
+                                  },
+                                  child: Text(
+                                    'Biometric',
+                                    style: TextStyle(
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .primary,
+                                        letterSpacing: 1,
+                                        fontSize: 35,
+                                        height: 16 / 12),
+                                  ),
+                                )
+                              ],
+                            ),
                             SizedBox(height: 4),
                           ],
                         )),
@@ -177,29 +197,6 @@ class _InternalSensorsPageState extends TbPageState<InternalSensorsPage> {
               ))
         ]));
   }
-
-  /* @override
-  Widget build(BuildContext context) {
-    var assetsList = InternalSensorsList(tbContext, _pageLinkController,
-        searchMode: widget.searchMode);
-    PreferredSizeWidget appBar;
-    if (widget.searchMode) {
-      appBar = TbAppSearchBar(
-        tbContext,
-        onSearch: (searchText) => _pageLinkController.onSearchText(searchText),
-      );
-    } else {
-      appBar = TbAppBar(tbContext, title: Text(assetsList.title), actions: [
-        IconButton(
-          icon: Icon(Icons.search),
-          onPressed: () {
-            navigateTo('/assets?search=true');
-          },
-        )
-      ]);
-    }
-    return Scaffold(appBar: appBar, body: assetsList);
-  } */
 
   void _accelPage() async {
     navigateTo('/internalSensors/accel');
@@ -219,5 +216,9 @@ class _InternalSensorsPageState extends TbPageState<InternalSensorsPage> {
 
   void _locationPage() async {
     navigateTo('/internalSensors/location');
+  }
+
+  void _biometricPage() async {
+    navigateTo('/internalSensors/biometrics');
   }
 }

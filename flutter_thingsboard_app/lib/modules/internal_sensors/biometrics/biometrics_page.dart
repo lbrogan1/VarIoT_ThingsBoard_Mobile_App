@@ -5,15 +5,16 @@ import 'package:thingsboard_app/generated/l10n.dart';
 import 'package:thingsboard_app/modules/profile/change_password_page.dart';
 import 'package:thingsboard_app/widgets/tb_app_bar.dart';
 import 'package:thingsboard_app/core/entity/entities_list.dart';
-import 'package:thingsboard_app/modules/internal_sensors/location/location_data.dart';
 import 'package:thingsboard_app/modules/internal_sensors/accelerometer/accelerometer_data.dart';
+import 'package:thingsboard_app/modules/internal_sensors/biometrics/biometrics_data.dart';
 
 import 'package:thingsboard_app/core/context/tb_context.dart';
 import 'package:thingsboard_app/core/context/tb_context_widget.dart';
 import 'package:thingsboard_app/core/entity/entities_base.dart';
 import 'package:thingsboard_app/modules/audit_log/audit_logs_list.dart';
 import 'package:thingsboard_app/modules/internal_sensors/internal_sensors_list.dart';
-import 'package:thingsboard_app/modules/internal_sensors/location/location_list.dart';
+import 'package:thingsboard_app/modules/internal_sensors/accelerometer/accel_list.dart';
+import 'package:thingsboard_app/modules/internal_sensors/biometrics/biometrics_list.dart';
 import 'package:thingsboard_app/widgets/tb_app_bar.dart';
 
 import 'package:thingsboard_app/core/context/tb_context.dart';
@@ -21,17 +22,16 @@ import 'package:thingsboard_app/core/context/tb_context_widget.dart';
 import 'package:thingsboard_app/widgets/tb_progress_indicator.dart';
 import 'package:thingsboard_client/thingsboard_client.dart';
 
-class LocationPage extends TbPageWidget {
+class BioPage extends TbPageWidget {
   final bool searchMode;
 
-  LocationPage(TbContext tbContext, {this.searchMode = false})
-      : super(tbContext);
+  BioPage(TbContext tbContext, {this.searchMode = false}) : super(tbContext);
 
   @override
-  _LocationPageState createState() => _LocationPageState();
+  _BioPageState createState() => _BioPageState();
 }
 
-class _LocationPageState extends TbPageState<LocationPage> {
+class _BioPageState extends TbPageState<BioPage> {
   final PageLinkController _pageLinkController = PageLinkController();
 
   @override
@@ -42,8 +42,8 @@ class _LocationPageState extends TbPageState<LocationPage> {
 
   @override
   Widget build(BuildContext context) {
-    var assetsList = LocationList(tbContext, _pageLinkController,
-        searchMode: widget.searchMode);
+    var assetsList =
+        BioList(tbContext, _pageLinkController, searchMode: widget.searchMode);
     PreferredSizeWidget appBar;
     appBar = TbAppBar(tbContext, title: Text(assetsList.title), actions: [
       IconButton(
@@ -53,7 +53,7 @@ class _LocationPageState extends TbPageState<LocationPage> {
         },
       )
     ]);
-    List<String> locationDataList = getLocationText();
+    List<String> accelDataList = getAccelText();
     return Scaffold(
         appBar: appBar,
         body: Row(mainAxisSize: MainAxisSize.max, children: [
@@ -78,7 +78,7 @@ class _LocationPageState extends TbPageState<LocationPage> {
                                   FittedBox(
                                       fit: BoxFit.fitWidth,
                                       alignment: Alignment.centerLeft,
-                                      child: Text(locationDataList[0],
+                                      child: Text(accelDataList[0],
                                           style: TextStyle(
                                               color: Color(0xFF282828),
                                               fontSize: 22,
@@ -94,13 +94,14 @@ class _LocationPageState extends TbPageState<LocationPage> {
                                   FittedBox(
                                       fit: BoxFit.fitWidth,
                                       alignment: Alignment.centerLeft,
-                                      child: Text(locationDataList[1],
+                                      child: Text(accelDataList[1],
                                           style: TextStyle(
                                               color: Color(0xFF282828),
                                               fontSize: 22,
                                               fontWeight: FontWeight.w500,
                                               height: 20 / 14))),
                                 ]),
+                            SizedBox(height: 4),
                             Row(
                                 mainAxisSize: MainAxisSize.max,
                                 mainAxisAlignment:
@@ -109,22 +110,7 @@ class _LocationPageState extends TbPageState<LocationPage> {
                                   FittedBox(
                                       fit: BoxFit.fitWidth,
                                       alignment: Alignment.centerLeft,
-                                      child: Text(locationDataList[2],
-                                          style: TextStyle(
-                                              color: Color(0xFF282828),
-                                              fontSize: 22,
-                                              fontWeight: FontWeight.w500,
-                                              height: 20 / 14))),
-                                ]),
-                            Row(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  FittedBox(
-                                      fit: BoxFit.fitWidth,
-                                      alignment: Alignment.centerLeft,
-                                      child: Text(locationDataList[3],
+                                      child: Text(accelDataList[2],
                                           style: TextStyle(
                                               color: Color(0xFF282828),
                                               fontSize: 22,
@@ -143,15 +129,13 @@ class _LocationPageState extends TbPageState<LocationPage> {
         ]));
   }
 
-  List<String> getLocationText() {
-    setLocationData();
-    String data = getLocationData();
+  List<String> getAccelText() {
+    String data = getAccelData();
     var split = data.split(',');
     List<String> dataText = [
-      "Latitude: " + split[0],
-      "Longitude: " + split[1],
-      "Altitude: " + split[2],
-      "Floor: " + split[3],
+      "X direction: " + split[0],
+      "Y direction: " + split[1],
+      "Z direction: " + split[2],
     ];
     return dataText;
   }
