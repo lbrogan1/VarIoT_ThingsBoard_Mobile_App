@@ -83,7 +83,7 @@ class _CameraPageState extends TbPageState<CameraPage> {
                   if (mounted) {
                     if (file != null) {
                       print("Picture saved to ${file.path}");
-                      sendTelemetry(file);
+                      sendTelemetry(file, file.path);
                       print("Telemetry sent ${file}");
                     }
                   }
