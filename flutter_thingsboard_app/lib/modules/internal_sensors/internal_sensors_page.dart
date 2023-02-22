@@ -186,6 +186,26 @@ class _InternalSensorsPageState extends TbPageState<InternalSensorsPage> {
                                 )
                               ],
                             ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                TextButton(
+                                  onPressed: () {
+                                    _NFCPage();
+                                  },
+                                  child: Text(
+                                    'NFC',
+                                    style: TextStyle(
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .primary,
+                                        letterSpacing: 1,
+                                        fontSize: 35,
+                                        height: 16 / 12),
+                                  ),
+                                )
+                              ],
+                            ),
                             SizedBox(height: 4),
                           ],
                         )),
@@ -220,5 +240,9 @@ class _InternalSensorsPageState extends TbPageState<InternalSensorsPage> {
 
   void _biometricPage() async {
     navigateTo('/internalSensors/biometrics');
+  }
+
+  void _NFCPage() async {
+    navigateTo('/internalSensors/NFC');
   }
 }

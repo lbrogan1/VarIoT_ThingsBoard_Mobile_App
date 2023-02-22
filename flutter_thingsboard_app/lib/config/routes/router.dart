@@ -20,6 +20,7 @@ import 'package:thingsboard_app/modules/internal_sensors/magnetometer/mag_routes
 import 'package:thingsboard_app/modules/internal_sensors/camera/camera_routes.dart';
 import 'package:thingsboard_app/modules/internal_sensors/location/location_routes.dart';
 import 'package:thingsboard_app/modules/internal_sensors/biometrics/biometrics_routes.dart';
+import 'package:thingsboard_app/modules/internal_sensors/NFC/NFC_routes.dart';
 import 'package:universal_html/html.dart';
 
 class ThingsboardAppRouter {
@@ -53,6 +54,7 @@ class ThingsboardAppRouter {
     CameraRoutes(_tbContext).registerRoutes();
     LocationRoutes(_tbContext).registerRoutes();
     BioRoutes(_tbContext).registerRoutes();
+    NFCRoutes(_tbContext).registerRoutes();
     CustomerRoutes(_tbContext).registerRoutes();
     TenantRoutes(_tbContext).registerRoutes();
   }
