@@ -206,6 +206,26 @@ class _InternalSensorsPageState extends TbPageState<InternalSensorsPage> {
                                 )
                               ],
                             ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                TextButton(
+                                  onPressed: () {
+                                    _allPage();
+                                  },
+                                  child: Text(
+                                    'All Sensors',
+                                    style: TextStyle(
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .primary,
+                                        letterSpacing: 1,
+                                        fontSize: 35,
+                                        height: 16 / 12),
+                                  ),
+                                )
+                              ],
+                            ),
                             SizedBox(height: 4),
                           ],
                         )),
@@ -244,5 +264,9 @@ class _InternalSensorsPageState extends TbPageState<InternalSensorsPage> {
 
   void _NFCPage() async {
     navigateTo('/internalSensors/NFC');
+  }
+
+  void _allPage() async {
+    navigateTo('/internalSensors/all_sensors');
   }
 }
