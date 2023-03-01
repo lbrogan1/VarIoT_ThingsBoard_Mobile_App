@@ -211,6 +211,26 @@ class _InternalSensorsPageState extends TbPageState<InternalSensorsPage> {
                               children: [
                                 TextButton(
                                   onPressed: () {
+                                    _audioPage();
+                                  },
+                                  child: Text(
+                                    'Audio',
+                                    style: TextStyle(
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .primary,
+                                        letterSpacing: 1,
+                                        fontSize: 35,
+                                        height: 16 / 12),
+                                  ),
+                                )
+                              ],
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                TextButton(
+                                  onPressed: () {
                                     _allPage();
                                   },
                                   child: Text(
@@ -268,5 +288,9 @@ class _InternalSensorsPageState extends TbPageState<InternalSensorsPage> {
 
   void _allPage() async {
     navigateTo('/internalSensors/all_sensors');
+  }
+
+  void _audioPage() async {
+    navigateTo('/internalSensors/audio');
   }
 }

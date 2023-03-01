@@ -52,6 +52,7 @@ dependencies:
   camera: ^0.10.3
   local_auth: ^2.1.5
   nfc_manager: ^3.2.0
+  noise_meter: ^3.1.0
 
 dev_dependencies:
   flutter_test:

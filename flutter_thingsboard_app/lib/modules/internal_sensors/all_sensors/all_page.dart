@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'dart:async';
+
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:thingsboard_app/generated/l10n.dart';
+import 'package:thingsboard_app/modules/internal_sensors/all_sensors/all_data.dart';
 import 'package:thingsboard_app/modules/profile/change_password_page.dart';
 import 'package:thingsboard_app/widgets/tb_app_bar.dart';
 import 'package:thingsboard_app/core/entity/entities_list.dart';
@@ -31,11 +34,19 @@ class AllPage extends TbPageWidget {
 
 class _AllPageState extends TbPageState<AllPage> {
   final PageLinkController _pageLinkController = PageLinkController();
+  Timer? timer;
 
   @override
   void dispose() {
+    timer?.cancel();
     _pageLinkController.dispose();
     super.dispose();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    timer = Timer.periodic(Duration(seconds: 5), (Timer t) => runAllSensors());
   }
 
   @override
@@ -148,22 +159,6 @@ class _AllPageState extends TbPageState<AllPage> {
                                               height: 20 / 14))),
                                 ]),
                             SizedBox(height: 4),
-                            Row(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  FittedBox(
-                                      fit: BoxFit.fitWidth,
-                                      alignment: Alignment.centerLeft,
-                                      child: Text(baseDataList[5],
-                                          style: TextStyle(
-                                              color: Color(0xFF282828),
-                                              fontSize: 22,
-                                              fontWeight: FontWeight.w500,
-                                              height: 20 / 14))),
-                                ]),
-                            SizedBox(height: 4),
                           ],
                         )),
                     SizedBox(width: 16),
@@ -182,7 +177,6 @@ class _AllPageState extends TbPageState<AllPage> {
       "   - Gyroscope",
       "   - Magnetometer",
       "   - GPS",
-      "   - Audio",
     ];
     return dataText;
   }

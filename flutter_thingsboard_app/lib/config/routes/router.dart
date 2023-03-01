@@ -22,6 +22,7 @@ import 'package:thingsboard_app/modules/internal_sensors/location/location_route
 import 'package:thingsboard_app/modules/internal_sensors/biometrics/biometrics_routes.dart';
 import 'package:thingsboard_app/modules/internal_sensors/NFC/NFC_routes.dart';
 import 'package:thingsboard_app/modules/internal_sensors/all_sensors/all_routes.dart';
+import 'package:thingsboard_app/modules/internal_sensors/audio/audio_routes.dart';
 import 'package:universal_html/html.dart';
 
 class ThingsboardAppRouter {
@@ -57,6 +58,7 @@ class ThingsboardAppRouter {
     BioRoutes(_tbContext).registerRoutes();
     NFCRoutes(_tbContext).registerRoutes();
     AllRoutes(_tbContext).registerRoutes();
+    AudioRoutes(_tbContext).registerRoutes();
     CustomerRoutes(_tbContext).registerRoutes();
     TenantRoutes(_tbContext).registerRoutes();
   }
