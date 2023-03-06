@@ -41,7 +41,7 @@ void sendTelemetry(String xData, String yData, String zData) async {
 
 void getAccessToken() async {
   String username = 'lwb32@drexel.edu';
-  String password = 'Cheesecake11!';
+  String password = '*********';
   String URLendpoint = 'http://variot.ece.drexel.edu';
   String URL = URLendpoint + '/api/auth/login';
   Map<String, String> headers = {'Content-Type': 'application/json'};
