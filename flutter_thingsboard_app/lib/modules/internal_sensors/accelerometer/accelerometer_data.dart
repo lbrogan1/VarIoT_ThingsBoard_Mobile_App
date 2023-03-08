@@ -21,11 +21,22 @@ String getAccelData() {
   String yS = y.toString();
   String zS = z.toString();
   //Decide if we should create device or get info
-  longin_vars.getAllDevices();
-
-  //Future<String> APIToken = longin_vars.allDeviceCreate("Accelerometer");
-  //sendTelemetry(xS, yS, zS, APIToken);
+  Future<bool> isAdded = longin_vars.getAllDevices("Accelerometer");
+  decideTelemtery(xS, yS, zS, isAdded);
   return xS + "," + yS + "," + zS;
+}
+
+void decideTelemtery(
+    String xS, String yS, String zS, Future<bool> isAdded) async {
+  bool _isAdded = await isAdded;
+  Future<String> APIToken;
+  if (_isAdded) {
+    APIToken = longin_vars.getDeviceAPIToken("Accelerometer");
+    sendTelemetry(xS, yS, zS, APIToken);
+  } else {
+    APIToken = longin_vars.allDeviceCreate("Accelerometer");
+    sendTelemetry(xS, yS, zS, APIToken);
+  }
 }
 
 void sendTelemetry(

@@ -127,29 +127,6 @@ class _AcclPageState extends TbPageState<AcclPage> {
         ]));
   }
 
-  /* @override
-  Widget build(BuildContext context) {
-    var assetsList = InternalSensorsList(tbContext, _pageLinkController,
-        searchMode: widget.searchMode);
-    PreferredSizeWidget appBar;
-    if (widget.searchMode) {
-      appBar = TbAppSearchBar(
-        tbContext,
-        onSearch: (searchText) => _pageLinkController.onSearchText(searchText),
-      );
-    } else {
-      appBar = TbAppBar(tbContext, title: Text(assetsList.title), actions: [
-        IconButton(
-          icon: Icon(Icons.search),
-          onPressed: () {
-            navigateTo('/assets?search=true');
-          },
-        )
-      ]);
-    }
-    return Scaffold(appBar: appBar, body: assetsList);
-  } */
-
   List<String> getAccelText() {
     String data = getAccelData();
     var split = data.split(',');

@@ -14,7 +14,29 @@ class longin_vars {
 
   longin_vars._();
 
-  static void getAllDevices() async {
+  static Future<String> getDeviceAPIToken(String sensorName) async {
+    String deviceName = longin_vars.ident + ' ' + sensorName;
+    Future<String> accessT = longin_vars.getAccessToken();
+    String _accessT = await accessT;
+    String URLendpoint = 'http://variot.ece.drexel.edu';
+    String URL = URLendpoint +
+        '/api/tenant/devices?pageSize=100&page=0&textSearch=' +
+        deviceName;
+    Map<String, String> headers = {
+      "Accept": 'application/json',
+      "Content-Type": 'application/json',
+      "X-Authorization": "Bearer " + _accessT
+    };
+
+    var r = await Requests.get(URL, headers: headers);
+    var responseBody = r.json();
+    var deviceID = responseBody['data'][0]['id']['id'];
+
+    Future<String> APIToken = getAPIToken(Future.value(deviceID));
+    return APIToken;
+  }
+
+  static Future<bool> getAllDevices(String sensorName) async {
     var split = longin_vars.username.split('@');
     longin_vars.ident = split[0];
     Future<String> accessT = longin_vars.getAccessToken();
@@ -24,15 +46,27 @@ class longin_vars {
         '/api/tenant/devices?pageSize=100&page=0&textSearch=' +
         longin_vars.ident;
     ;
-    print('$URL');
     Map<String, String> headers = {
       "Accept": 'application/json',
       "Content-Type": 'application/json',
       "X-Authorization": "Bearer " + _accessT
     };
+
     var r = await Requests.get(URL, headers: headers);
     var responseBody = r.json();
-    print('$responseBody');
+    List<dynamic> data = responseBody['data'];
+    List<String> deviceNames = [];
+    for (dynamic item in data) {
+      deviceNames.add(item['name']);
+    }
+    //print('$deviceNames');
+
+    for (String s in deviceNames) {
+      if (s.contains(sensorName)) {
+        return Future.value(true);
+      }
+    }
+    return Future.value(false);
   }
 
   static Future<String> allDeviceCreate(String currSensor) {
