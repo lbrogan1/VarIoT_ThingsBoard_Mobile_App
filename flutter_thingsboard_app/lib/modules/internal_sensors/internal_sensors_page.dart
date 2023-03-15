@@ -258,13 +258,6 @@ class _InternalSensorsPageState extends TbPageState<InternalSensorsPage> {
         ]));
   }
 
-  void checkHardwareForSensors() {
-    //Check for all sensors
-    //return a list of the sesnors that are available
-    //Grey out the selection that are not on the hardware on the phone
-    //Thus not allowing the user to select sensors that they do not have
-  }
-
   void _accelPage() async {
     navigateTo('/internalSensors/accel');
   }
