@@ -1,5 +1,9 @@
 import 'package:geolocator/geolocator.dart';
 import 'package:requests/requests.dart';
+import 'dart:convert';
+import 'dart:async';
+
+import 'package:thingsboard_app/widgets/login_vars.dart';
 
 String lat = "";
 String long = "";
@@ -22,15 +26,30 @@ Future<String> setLocationData() async {
 }
 
 String getLocationData() {
-  sendTelemetry(lat, long, alt, floor);
+  Future<bool> isAdded = longin_vars.getAllDevices("GPS");
+  decideTelemtery(lat, long, alt, floor, isAdded);
   return lat + "," + long + "," + alt + "," + floor;
 }
 
-void sendTelemetry(String lat, String long, String alt, String floor) async {
+void decideTelemtery(String lat1, String long1, String alt1, String floor1,
+    Future<bool> isAdded) async {
+  bool _isAdded = await isAdded;
+  Future<String> APIToken;
+  if (_isAdded) {
+    APIToken = longin_vars.getDeviceAPIToken("GPS");
+    sendTelemetry(lat1, long1, alt1, floor1, APIToken);
+  } else {
+    APIToken = longin_vars.allDeviceCreate("GPS");
+    sendTelemetry(lat1, long1, alt1, floor1, APIToken);
+  }
+}
+
+void sendTelemetry(String lat, String long, String alt, String floor,
+    Future<String> APIToken) async {
+  String _APIToken = await APIToken;
   var accelData = {'lat': lat, 'long': long, 'altitude': alt, 'floor': floor};
   String URLendpoint = 'http://variot.ece.drexel.edu';
-  String APItoken = 'PCWddA3Xn1eW24Sqlw38';
-  String URL = URLendpoint + '/api/v1/' + APItoken + '/telemetry';
+  String URL = URLendpoint + '/api/v1/' + _APIToken + '/telemetry';
   var r = await Requests.post(URL,
       json: accelData,
       verify: false,
