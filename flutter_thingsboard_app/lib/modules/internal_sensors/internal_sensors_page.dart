@@ -18,6 +18,9 @@ import 'package:thingsboard_app/core/context/tb_context_widget.dart';
 import 'package:thingsboard_app/widgets/tb_progress_indicator.dart';
 import 'package:thingsboard_client/thingsboard_client.dart';
 
+import 'package:thingsboard_app/modules/internal_sensors/hardware_check/hardware_check_values.dart';
+import 'package:thingsboard_app/modules/internal_sensors/hardware_check/check_all_hardware.dart';
+
 class InternalSensorsPage extends TbPageWidget {
   final bool searchMode;
 
@@ -50,6 +53,14 @@ class _InternalSensorsPageState extends TbPageState<InternalSensorsPage> {
         },
       )
     ]);
+    var accelColor = hardware_check_values.getAccelColor(context);
+    var gyroColor = hardware_check_values.getGyroColor(context);
+    var magColor = hardware_check_values.getMagColor(context);
+    var locationColor = hardware_check_values.getLocationColor(context);
+    var cameraColor = Colors.grey;
+    var bioColor = Colors.grey;
+    var NFCColor = Colors.grey;
+    var audioColor = Colors.grey;
     return Scaffold(
         appBar: appBar,
         body: Row(mainAxisSize: MainAxisSize.max, children: [
@@ -71,14 +82,17 @@ class _InternalSensorsPageState extends TbPageState<InternalSensorsPage> {
                               children: [
                                 TextButton(
                                   onPressed: () {
-                                    _accelPage();
+                                    if (hardware_check_values.hasAccel == 1) {
+                                      _accelPage();
+                                    } else {
+                                      null;
+                                    }
                                   },
                                   child: Text(
                                     'Accelerometer',
                                     style: TextStyle(
-                                        color: Theme.of(context)
-                                            .colorScheme
-                                            .primary,
+                                        color:
+                                            accelColor, //Theme.of(context).colorScheme.primary,
                                         letterSpacing: 1,
                                         fontSize: 35,
                                         height: 16 / 12),
@@ -91,14 +105,16 @@ class _InternalSensorsPageState extends TbPageState<InternalSensorsPage> {
                               children: [
                                 TextButton(
                                   onPressed: () {
-                                    _gyroPage();
+                                    if (hardware_check_values.hasGyro == 1) {
+                                      _gyroPage();
+                                    } else {
+                                      null;
+                                    }
                                   },
                                   child: Text(
                                     'Gyroscope',
                                     style: TextStyle(
-                                        color: Theme.of(context)
-                                            .colorScheme
-                                            .primary,
+                                        color: gyroColor,
                                         letterSpacing: 1,
                                         fontSize: 35,
                                         height: 16 / 12),
@@ -111,14 +127,16 @@ class _InternalSensorsPageState extends TbPageState<InternalSensorsPage> {
                               children: [
                                 TextButton(
                                   onPressed: () {
-                                    _magPage();
+                                    if (hardware_check_values.hasMag == 1) {
+                                      _magPage();
+                                    } else {
+                                      null;
+                                    }
                                   },
                                   child: Text(
                                     'Magnetometer',
                                     style: TextStyle(
-                                        color: Theme.of(context)
-                                            .colorScheme
-                                            .primary,
+                                        color: magColor,
                                         letterSpacing: 1,
                                         fontSize: 35,
                                         height: 16 / 12),
@@ -131,14 +149,16 @@ class _InternalSensorsPageState extends TbPageState<InternalSensorsPage> {
                               children: [
                                 TextButton(
                                   onPressed: () {
-                                    _cameraPage();
+                                    if (hardware_check_values.hasCamera == 1) {
+                                      _cameraPage();
+                                    } else {
+                                      null;
+                                    }
                                   },
                                   child: Text(
                                     'Camera',
                                     style: TextStyle(
-                                        color: Theme.of(context)
-                                            .colorScheme
-                                            .primary,
+                                        color: cameraColor,
                                         letterSpacing: 1,
                                         fontSize: 35,
                                         height: 16 / 12),
@@ -151,14 +171,17 @@ class _InternalSensorsPageState extends TbPageState<InternalSensorsPage> {
                               children: [
                                 TextButton(
                                   onPressed: () {
-                                    _locationPage();
+                                    if (hardware_check_values.hasLocation ==
+                                        1) {
+                                      _locationPage();
+                                    } else {
+                                      null;
+                                    }
                                   },
                                   child: Text(
                                     'Location',
                                     style: TextStyle(
-                                        color: Theme.of(context)
-                                            .colorScheme
-                                            .primary,
+                                        color: locationColor,
                                         letterSpacing: 1,
                                         fontSize: 35,
                                         height: 16 / 12),
@@ -171,14 +194,16 @@ class _InternalSensorsPageState extends TbPageState<InternalSensorsPage> {
                               children: [
                                 TextButton(
                                   onPressed: () {
-                                    _biometricPage();
+                                    if (hardware_check_values.hasBio == 1) {
+                                      _biometricPage();
+                                    } else {
+                                      null;
+                                    }
                                   },
                                   child: Text(
                                     'Biometric',
                                     style: TextStyle(
-                                        color: Theme.of(context)
-                                            .colorScheme
-                                            .primary,
+                                        color: bioColor,
                                         letterSpacing: 1,
                                         fontSize: 35,
                                         height: 16 / 12),
@@ -191,14 +216,16 @@ class _InternalSensorsPageState extends TbPageState<InternalSensorsPage> {
                               children: [
                                 TextButton(
                                   onPressed: () {
-                                    _NFCPage();
+                                    if (hardware_check_values.hasNFC == 1) {
+                                      _NFCPage();
+                                    } else {
+                                      null;
+                                    }
                                   },
                                   child: Text(
                                     'NFC',
                                     style: TextStyle(
-                                        color: Theme.of(context)
-                                            .colorScheme
-                                            .primary,
+                                        color: NFCColor,
                                         letterSpacing: 1,
                                         fontSize: 35,
                                         height: 16 / 12),
@@ -211,14 +238,16 @@ class _InternalSensorsPageState extends TbPageState<InternalSensorsPage> {
                               children: [
                                 TextButton(
                                   onPressed: () {
-                                    _audioPage();
+                                    if (hardware_check_values.hasAudio == 1) {
+                                      _audioPage();
+                                    } else {
+                                      null;
+                                    }
                                   },
                                   child: Text(
                                     'Audio',
                                     style: TextStyle(
-                                        color: Theme.of(context)
-                                            .colorScheme
-                                            .primary,
+                                        color: audioColor,
                                         letterSpacing: 1,
                                         fontSize: 35,
                                         height: 16 / 12),

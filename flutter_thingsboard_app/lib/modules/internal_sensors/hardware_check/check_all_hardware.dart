@@ -11,6 +11,7 @@ void checkHardwareForSensors() {
   checkForAccel();
   checkForGyro();
   checkForMag();
+  checkForLocation();
 }
 
 void checkForAccel() async {
