@@ -46,7 +46,12 @@ class _AllPageState extends TbPageState<AllPage> {
   @override
   void initState() {
     super.initState();
-    timer = Timer.periodic(Duration(seconds: 5), (Timer t) => runAllSensors());
+    timer = Timer.periodic(Duration(seconds: 10), (Timer t) => runAllSensors());
+    timer = Timer.periodic(Duration(seconds: 20), (Timer t) => runAllSensors());
+    timer = Timer.periodic(Duration(seconds: 30), (Timer t) => runAllSensors());
+    timer = Timer.periodic(Duration(seconds: 40), (Timer t) => runAllSensors());
+    timer = Timer.periodic(Duration(seconds: 50), (Timer t) => runAllSensors());
+    timer = Timer.periodic(Duration(seconds: 60), (Timer t) => runAllSensors());
   }
 
   @override

@@ -101,6 +101,7 @@ class _LocationPageState extends TbPageState<LocationPage> {
                                               fontWeight: FontWeight.w500,
                                               height: 20 / 14))),
                                 ]),
+                            /*
                             Row(
                                 mainAxisSize: MainAxisSize.max,
                                 mainAxisAlignment:
@@ -131,6 +132,7 @@ class _LocationPageState extends TbPageState<LocationPage> {
                                               fontWeight: FontWeight.w500,
                                               height: 20 / 14))),
                                 ]),
+                                */
                             SizedBox(height: 4),
                           ],
                         )),
