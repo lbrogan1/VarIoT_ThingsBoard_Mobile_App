@@ -1,3 +1,4 @@
+/*
 import 'package:fluro/fluro.dart';
 import 'package:flutter/widgets.dart';
 import 'package:thingsboard_app/config/routes/router.dart';
@@ -21,3 +22,4 @@ class CameraRoutes extends TbRoutes {
     router.define("/internalSensors/camera", handler: gyroscopeRoutesHandler);
   }
 }
+ */

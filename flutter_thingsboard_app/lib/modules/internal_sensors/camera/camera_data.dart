@@ -1,3 +1,4 @@
+/*
 import 'dart:convert';
 import 'dart:io';
 
@@ -22,3 +23,4 @@ void sendTelemetry(XFile F, String path) async {
     print("${e}");
   }
 }
+*/

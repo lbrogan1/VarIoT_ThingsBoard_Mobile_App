@@ -17,7 +17,7 @@ import 'package:thingsboard_app/utils/ui_utils_routes.dart';
 import 'package:thingsboard_app/modules/internal_sensors/accelerometer/accel_routes.dart';
 import 'package:thingsboard_app/modules/internal_sensors/gyroscope/gyro_routes.dart';
 import 'package:thingsboard_app/modules/internal_sensors/magnetometer/mag_routes.dart';
-import 'package:thingsboard_app/modules/internal_sensors/camera/camera_routes.dart';
+//import 'package:thingsboard_app/modules/internal_sensors/camera/camera_routes.dart';
 import 'package:thingsboard_app/modules/internal_sensors/location/location_routes.dart';
 import 'package:thingsboard_app/modules/internal_sensors/biometrics/biometrics_routes.dart';
 import 'package:thingsboard_app/modules/internal_sensors/NFC/NFC_routes.dart';
@@ -53,7 +53,7 @@ class ThingsboardAppRouter {
     AccelerometerRoutes(_tbContext).registerRoutes();
     GyroscopeRoutes(_tbContext).registerRoutes();
     MagnetometerRoutes(_tbContext).registerRoutes();
-    CameraRoutes(_tbContext).registerRoutes();
+    //CameraRoutes(_tbContext).registerRoutes();
     LocationRoutes(_tbContext).registerRoutes();
     BioRoutes(_tbContext).registerRoutes();
     NFCRoutes(_tbContext).registerRoutes();

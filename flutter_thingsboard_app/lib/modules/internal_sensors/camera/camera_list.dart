@@ -1,3 +1,4 @@
+/*
 import 'package:thingsboard_app/core/context/tb_context.dart';
 import 'package:thingsboard_app/core/entity/entities_base.dart';
 import 'package:thingsboard_app/core/entity/entities_list.dart';
@@ -10,3 +11,4 @@ class CameraList extends BaseEntitiesWidget<AssetInfo, PageLink>
       {searchMode = false})
       : super(tbContext, pageKeyController, searchMode: searchMode);
 }
+ */
