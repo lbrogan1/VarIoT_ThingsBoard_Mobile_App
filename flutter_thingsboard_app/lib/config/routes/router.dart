@@ -14,6 +14,16 @@ import 'package:thingsboard_app/modules/home/home_routes.dart';
 import 'package:thingsboard_app/modules/profile/profile_routes.dart';
 import 'package:thingsboard_app/modules/tenant/tenant_routes.dart';
 import 'package:thingsboard_app/utils/ui_utils_routes.dart';
+import 'package:thingsboard_app/modules/internal_sensors/accelerometer/accel_routes.dart';
+import 'package:thingsboard_app/modules/internal_sensors/gyroscope/gyro_routes.dart';
+import 'package:thingsboard_app/modules/internal_sensors/magnetometer/mag_routes.dart';
+//import 'package:thingsboard_app/modules/internal_sensors/camera/camera_routes.dart';
+import 'package:thingsboard_app/modules/internal_sensors/location/location_routes.dart';
+import 'package:thingsboard_app/modules/internal_sensors/biometrics/biometrics_routes.dart';
+import 'package:thingsboard_app/modules/internal_sensors/NFC/NFC_routes.dart';
+import 'package:thingsboard_app/modules/internal_sensors/all_sensors/all_routes.dart';
+import 'package:thingsboard_app/modules/internal_sensors/audio/audio_routes.dart';
+import 'package:universal_html/html.dart';
 
 class ThingsboardAppRouter {
   final router = FluroRouter();
@@ -24,8 +34,9 @@ class ThingsboardAppRouter {
         handlerFunc: (BuildContext? context, Map<String, List<String>> params) {
       var settings = context!.settings;
       return Scaffold(
-        appBar: AppBar(title: Text('Not Found')),
-        body: Center(child: Text('Route not defined: ${settings!.name}')),
+        appBar: AppBar(title: null), //Text('Not Found')),
+        body: Center(
+            child: null), //Text('Route not defined: ${settings!.name}')),
       );
     });
     InitRoutes(_tbContext).registerRoutes();
@@ -39,6 +50,15 @@ class ThingsboardAppRouter {
     DashboardRoutes(_tbContext).registerRoutes();
     AuditLogsRoutes(_tbContext).registerRoutes();
     InternalSensorsRoutes(_tbContext).registerRoutes();
+    AccelerometerRoutes(_tbContext).registerRoutes();
+    GyroscopeRoutes(_tbContext).registerRoutes();
+    MagnetometerRoutes(_tbContext).registerRoutes();
+    //CameraRoutes(_tbContext).registerRoutes();
+    LocationRoutes(_tbContext).registerRoutes();
+    BioRoutes(_tbContext).registerRoutes();
+    NFCRoutes(_tbContext).registerRoutes();
+    AllRoutes(_tbContext).registerRoutes();
+    AudioRoutes(_tbContext).registerRoutes();
     CustomerRoutes(_tbContext).registerRoutes();
     TenantRoutes(_tbContext).registerRoutes();
   }

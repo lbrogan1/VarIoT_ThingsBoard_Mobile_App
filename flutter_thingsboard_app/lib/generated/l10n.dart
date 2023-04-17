@@ -130,11 +130,31 @@ class S {
     );
   }
 
-    /// `Internal Sensors`
+  /// `Internal Sensors`
   String get internalSensors {
     return Intl.message(
       'Internal Sensors',
       name: 'internalSensors',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Dashboards`
+  String get dashboards {
+    return Intl.message(
+      'Dashboards',
+      name: 'dashboards',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Device Profiles`
+  String get deviceProfiles {
+    return Intl.message(
+      'deviceProfiles',
+      name: 'deviceProfiles',
       desc: '',
       args: [],
     );

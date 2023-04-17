@@ -12,6 +12,7 @@ import 'package:thingsboard_app/core/context/tb_context_widget.dart';
 import 'package:thingsboard_app/generated/l10n.dart';
 import 'package:thingsboard_app/widgets/tb_progress_indicator.dart';
 import 'package:thingsboard_client/thingsboard_client.dart';
+import 'package:thingsboard_app/widgets/login_vars.dart';
 
 import 'login_page_background.dart';
 
@@ -346,6 +347,8 @@ class _LoginPageState extends TbPageState<LoginPage> {
       var formValue = _loginFormKey.currentState!.value;
       String username = formValue['username'];
       String password = formValue['password'];
+      longin_vars.username = username;
+      longin_vars.password = password;
       _isLoginNotifier.value = true;
       try {
         await tbClient.login(LoginRequest(username, password));

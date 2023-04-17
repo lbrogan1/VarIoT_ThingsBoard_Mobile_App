@@ -10,6 +10,8 @@ import 'package:thingsboard_app/modules/tenant/tenants_widget.dart';
 import 'package:thingsboard_app/widgets/tb_app_bar.dart';
 import 'package:thingsboard_client/thingsboard_client.dart';
 
+import 'package:thingsboard_app/modules/internal_sensors/hardware_check/check_all_hardware.dart';
+
 class HomePage extends TbContextWidget {
   HomePage(TbContext tbContext) : super(tbContext);
 
@@ -21,6 +23,7 @@ class _HomePageState extends TbContextState<HomePage>
     with AutomaticKeepAliveClientMixin<HomePage> {
   @override
   void initState() {
+    checkHardwareForSensors();
     super.initState();
   }
 
