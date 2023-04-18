@@ -17,6 +17,9 @@ String getGyroData() {
       z = event.z;
     },
   );
+  x = 8;
+  y = 4;
+  z = 1;
   String xS = x.toString();
   String yS = y.toString();
   String zS = z.toString();

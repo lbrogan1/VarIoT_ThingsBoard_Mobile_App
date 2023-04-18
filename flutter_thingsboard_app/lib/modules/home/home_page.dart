@@ -23,7 +23,7 @@ class _HomePageState extends TbContextState<HomePage>
     with AutomaticKeepAliveClientMixin<HomePage> {
   @override
   void initState() {
-    checkHardwareForSensors();
+    //checkHardwareForSensors();
     super.initState();
   }
 

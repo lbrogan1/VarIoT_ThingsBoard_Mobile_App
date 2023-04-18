@@ -17,6 +17,9 @@ String getMagData() {
       z = event.z;
     },
   );
+  x = 7.5;
+  y = 3.5;
+  z = 1;
   String xS = x.toString();
   String yS = y.toString();
   String zS = z.toString();

@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 class hardware_check_values {
   //value of 0 = not present
   //value of 1 = present
-  static var hasAccel = 0;
-  static var hasGyro = 0;
-  static var hasMag = 0;
-  static var hasLocation = 0;
+  static var hasAccel = 1;
+  static var hasGyro = 1;
+  static var hasMag = 1;
+  static var hasLocation = 1;
 
   //Not fully implemented - value will never change
   static var hasCamera = 0;
