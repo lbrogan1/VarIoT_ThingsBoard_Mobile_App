@@ -3,6 +3,6 @@ abstract class ThingsboardAppConstants {
   static final thingsboardOAuth2CallbackUrlScheme =
       'org.thingsboard.ce.app.auth';
 
-  /// Not for production (only for debugging)
+  /// Not for production (only for debugging)cd
   static final thingsboardOAuth2AppSecret = '2CYSt6R7GpzHiPaDIyRe';
 }
