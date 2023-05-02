@@ -17,12 +17,9 @@ String getMagData() {
       z = event.z;
     },
   );
-  x = 7.5;
-  y = 3.5;
-  z = 1;
-  String xS = x.toString();
-  String yS = y.toString();
-  String zS = z.toString();
+  String xS = x.toStringAsFixed(2);
+  String yS = y.toStringAsFixed(2);
+  String zS = z.toStringAsFixed(2);
   Future<bool> isAdded = longin_vars.getAllDevices("Magnetometer");
   decideTelemtery(xS, yS, zS, isAdded);
   return xS + "," + yS + "," + zS;

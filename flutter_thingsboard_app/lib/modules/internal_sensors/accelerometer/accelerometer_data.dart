@@ -17,9 +17,9 @@ String getAccelData() {
       z = event.z;
     },
   );
-  String xS = x.toString();
-  String yS = y.toString();
-  String zS = z.toString();
+  String xS = x.toStringAsFixed(2);
+  String yS = y.toStringAsFixed(2);
+  String zS = z.toStringAsFixed(2);
   //Decide if we should create device or get info
   Future<bool> isAdded = longin_vars.getAllDevices("Accelerometer");
   decideTelemtery(xS, yS, zS, isAdded);
