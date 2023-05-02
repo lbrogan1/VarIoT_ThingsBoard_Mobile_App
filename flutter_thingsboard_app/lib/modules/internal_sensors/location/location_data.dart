@@ -15,6 +15,9 @@ Future<Position> getLocation() async {
 }
 
 Future<String> setLocationData() async {
+  LocationPermission permission;
+  permission = await Geolocator.requestPermission();
+
   Position pos = await getLocation();
 
   lat = pos.latitude.toString();
