@@ -3,6 +3,7 @@ import 'package:thingsboard_app/core/context/tb_context.dart';
 import 'package:thingsboard_app/core/context/tb_context_widget.dart';
 import 'package:thingsboard_app/generated/l10n.dart';
 import 'package:thingsboard_client/thingsboard_client.dart';
+import 'package:thingsboard_app/widgets/login_vars.dart';
 
 class MorePage extends TbContextWidget {
   MorePage(TbContext tbContext) : super(tbContext);
@@ -166,6 +167,7 @@ class MoreMenuItem {
       TbContext tbContext, BuildContext context) {
     if (tbContext.isAuthenticated) {
       List<MoreMenuItem> items = [];
+      String internalSensorsPath = decideInternalSensorsPath();
       switch (tbContext.tbClient.getAuthUser()!.authority) {
         case Authority.SYS_ADMIN:
           break;
@@ -186,7 +188,7 @@ class MoreMenuItem {
             MoreMenuItem(
                 title: '${S.of(context).internalSensors}',
                 icon: Icons.domain,
-                path: '/internalSensors'),
+                path: internalSensorsPath),
             MoreMenuItem(
                 title: '${S.of(context).dashboards}',
                 icon: Icons.track_changes,
@@ -211,6 +213,14 @@ class MoreMenuItem {
       return items;
     } else {
       return [];
+    }
+  }
+
+  static String decideInternalSensorsPath() {
+    if (longin_vars.username == "") {
+      return '/login';
+    } else {
+      return '/internalSensors';
     }
   }
 }

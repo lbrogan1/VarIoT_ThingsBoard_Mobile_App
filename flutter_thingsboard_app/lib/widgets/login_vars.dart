@@ -82,10 +82,12 @@ class longin_vars {
     String _deviceID = await deviceID;
     String URLendpoint = 'http://variot.ece.drexel.edu';
     String URL = URLendpoint + '/api/device/' + _deviceID + '/credentials';
+    Future<String> accessT = longin_vars.getAccessToken();
+    String _accessT = await accessT;
     Map<String, String> headers = {
       "Accept": 'application/json',
       "Content-Type": 'application/json',
-      "X-Authorization": "Bearer " + longin_vars.accToken
+      "X-Authorization": "Bearer " + _accessT //longin_vars.accToken
     };
     var r = await Requests.get(URL, headers: headers);
     var responseBody = r.json();
